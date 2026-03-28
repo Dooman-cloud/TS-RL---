@@ -59,10 +59,11 @@ project/
 
 2) 아래의 commit 메세지 규칙을 따르기
 예시 :
-`(추가) 파일이름 or 작업이름 : 데이터 전처리 후 시각화 추가`
-`(수정) 파일이름 or 작업이름 : VaR변수 임계점 조정 -1 => -1.5`
-`(생성) 파일이름 or 작업이름 : ANN,SVM 모델링 코드`
-
+```text
+(추가) 파일이름 or 작업이름 : 데이터 전처리 후 시각화 추가
+(수정) 파일이름 or 작업이름 : VaR변수 임계점 조정 -1 => -1.5
+(생성) 파일이름 or 작업이름 : ANN,SVM 모델링 코드
+```
 ## 6. 파일명 규칙
 
 1) 공용 파일 및 sharing 파일 
@@ -72,5 +73,5 @@ project/
 역할 , 작업 기반 이름 사용
 `model_svm.ipynb`
 `ex_boruta.ipynb `
-`data_GARCH_VAR.ipynb`
+`data_GARCH_VAR.csv`
 이런 형식으로 진행
