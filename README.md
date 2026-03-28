@@ -40,7 +40,7 @@ project/
 ```
 
 ## 4.Branch strategy
-
+```text
 -main : 안정 버전, 검수 완료 코드만 반영
 -feat/model-1 : 모델링 담당 1번 작업 브랜치 (찬재)
 -feat/model-2 : 모델링 담당 2번 작업 브랜치 (시훈)
@@ -52,7 +52,7 @@ project/
 **main 반영전 팀원 최소 2명 이상 검수후 merge**
 **modeling은 대략적 코드 구조를 맞춰 개인작업 후 integration 브랜치에 merge한 후 main 브랜치로 merge 하기**
 **main 반영될시 개인 브랜치에 주기적으로 pull하기**
-
+```
 ## 5.commit 규칙
 
 1) 기능 단위로 자주 commit 하기
