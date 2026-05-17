@@ -1,26 +1,24 @@
+# GJR-GARCH와 분류 모델 기반 하이브리드 프레임워크를 활용한 KOSPI 200 지수의 동적 Value-at-Risk 조정
 
-# TS_RL_proj
-
-## 1. Project Overview
-본 프로젝트는 2026 춘계 학회 포스터 논문을 위한 연구 프로젝트입니다.
-주요 목표는 GARCH 모델링을 통한 VaR + DDQN classification이며, 
-참고 논문인 **"Bridging Econometrics and AI VaR Estimation via"**의 데이터 수집, 전처리, 모델링, 실험 및 결과 정리를 체계적으로 수행 및 활용하는 것을 목적으로 합니다.
-
-## 2. Team Roles
-- **PM 현석**  
- Git/GitHub 구조 관리, 브랜치/merge 관리, 코드 검수, 실험 진행 보조, 레퍼런스 논문 활용 방안
-
-- **Modeling 찬재**  
-  ML 모델 구조 설계 및 구현, backtest 설계 , 레퍼런스 논문 활용 방안
-
-- **Modeling 시훈**  
-  ML 모델 구조 설계 및 구현, backtest 설계 
-
-- **Experiment 성택**  
-  변수선택, 실험 실행, DDQN 이론 숙지, 성능 결과 정리
+<img width="1920" height="2712" alt="GJRGARCH와 분류 모델 기반 하이브리드 프레임워크를 활용한 KOSPI 200 지수의_260517_181423_0" src="https://github.com/user-attachments/assets/d82fd48a-2664-42e1-ba61-2b021ed96b75" />
 
 
-## 3. Project file structure 
+
+## Project Overview
+GARCH 모델과 같은 전통적인 통계 모델은 비선형성 포착에 어려움이 있어 정확한 주식시장 리스크 추정량 산출에 한계가 있다. 본 연구는 시계열 예측 모델로부터 산출한 변동성 예측값과 분류 모델(기계학습, 강화학습)을 결합한 하이브리드 프레임워크를 제안한다. GJR-GARCH 모델로부터 산출한 VaR 추정량에 기초하여 위험 수준을 분류 모델로 예측하고, 그 결과에 따라 VaR 추정량을 동적으로 조정한다. YahooFinance와 KRX 데이터 마켓에서 수집한 2009년부터 2026년까지의 KOSPI 200 데이터로 본 프레임워크를 실험한 결과, 모든 분류 모델에서 조정된 VaR 적용 후 VaR 초과 비율이 이론적 초과 비율과 부합함을 Kupiec 검정으로 확인하였다. 이는 VaR 추정을 분류 문제로 재정의한 접근이 주식시장 리스크 추정에서 실증적 활용 가능성을 가짐을 시사한다.
+
+**Keyword: 분류 · GJR-GARCH · 변동성 · Value-at-Risk · 한국주식 · 금융 리스크.**
+
+## Contributors
+- 김성택, (16890) 경기도 용인시 수지구 죽전로 152, 단국대학교 통계데이터사이언스학과, 학사과정. E-mail:dunkykim@dankook.ac.kr
+- 도현석, (16890) 경기도 용인시 수지구 죽전로 152, 단국대학교 통계데이터사이언스학과, 학사과정. E-mail:32231447d@dankook.ac.kr
+- 이찬재, (16890) 경기도 용인시 수지구 죽전로 152, 단국대학교 통계데이터사이언스학과, 학사과정. E-mail:32213591@dankook.ac.kr
+- 정시훈, (16890) 경기도 용인시 수지구 죽전로 152, 단국대학교 통계데이터사이언스학과, 학사과정. E-mail:32231447d@dankook.ac.kr
+- 조민영, 교신저자: (16890) 경기도 용인시 수지구 죽전로 152, 단국대학교 통계데이터사이언스학과, 조교수. E-mail:myjo@dankook.ac.kr
+
+
+
+## file structure 
 
 ```text
 project/
@@ -39,39 +37,3 @@ project/
 ├─ README.md        
 ```
 
-## 4.Branch strategy
-```text
--main : 안정 버전, 검수 완료 코드만 반영
--feat/model-1 : 모델링 담당 1번 작업 브랜치 (찬재)
--feat/model-2 : 모델링 담당 2번 작업 브랜치 (시훈)
--feat/experiment : 실험 진행 담당 브랜치 (성택)
--feat/pm-setup : 구조 관리/ 공통 정리 브랜치 (현석)
--integration/model : 모델 브랜치 통합용
-
-**main 브랜치는 직접 push 금지, 개인 브랜치를 통한 작업 push만**
-**main 반영전 팀원 최소 2명 이상 검수후 merge**
-**modeling은 대략적 코드 구조를 맞춰 개인작업 후 integration 브랜치에 merge한 후 main 브랜치로 merge 하기**
-**main 반영될시 개인 브랜치에 주기적으로 pull하기**
-```
-## 5.commit 규칙
-
-1) 기능 단위로 자주 commit 하기
-
-2) 아래의 commit 메세지 규칙을 따르기
-예시 :
-```text
-(추가) 파일이름 or 작업이름 : 데이터 전처리 후 시각화 추가
-(수정) 파일이름 or 작업이름 : VaR변수 임계점 조정 -1 => -1.5
-(생성) 파일이름 or 작업이름 : ANN,SVM 모델링 코드
-```
-## 6. 파일명 규칙
-
-1) 공용 파일 및 sharing 파일 
-<01.data_collection> 과 같이 0x 번호 기반
-
-2) modeling 파일 / experiments 파일
-역할 , 작업 기반 이름 사용
-`model_svm.ipynb`
-`ex_boruta.ipynb `
-`data_GARCH_VAR.csv`
-이런 형식으로 진행
